@@ -26,7 +26,7 @@ $('#start').addEventListener('click',async()=>{
   const [THREE,{MindARThree}]=await Promise.all([import('three'),import('./vendor/mindar/mindar-image-three.prod.js')]);
   if(run!==generation)return;
   $('#ar').hidden=false;document.body.classList.add('scanning');
-  mindar=new MindARThree({container:$('#camera'),imageTargetSrc:'./assets/targets/targets.mind',maxTrack:1,uiLoading:'no',uiScanning:'no',uiError:'no',filterMinCF:0.001,filterBeta:1000});
+  mindar=new MindARThree({container:$('#camera'),imageTargetSrc:'./assets/targets/targets.mind?v=names-f87d3737',maxTrack:1,uiLoading:'no',uiScanning:'no',uiError:'no',filterMinCF:0.001,filterBeta:1000});
   mindar.renderer.setPixelRatio(Math.min(devicePixelRatio,1.5));
   videos.forEach((video,i)=>{const texture=new THREE.VideoTexture(video);texture.colorSpace=THREE.SRGBColorSpace;texture.minFilter=THREE.LinearFilter;textures.push(texture);
    const mesh=new THREE.Mesh(new THREE.PlaneGeometry(1,1),new THREE.MeshBasicMaterial({map:texture,side:THREE.DoubleSide,toneMapped:false}));
